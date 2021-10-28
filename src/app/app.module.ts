@@ -102,6 +102,6 @@ registerLocaleData(localePt, 'pt');
     },
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
   ],
-  bootstrap: [AppComponent] 
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
