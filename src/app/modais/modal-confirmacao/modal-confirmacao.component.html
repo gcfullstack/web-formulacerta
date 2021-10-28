@@ -1,0 +1,17 @@
+
+<span style="font-size: 16px; font-weight: 400; display: block; text-align: center;">{{ txtEnunciado }}</span>
+
+<app-text-area style="width: 100%;" [valor]="motivo" nome="Motivo" (capturarTexto)="motivo = $event.target.value" *ngIf="data.motivo"></app-text-area>
+
+<div style="margin-top: 35px; display: flex; justify-content: space-around">
+    <button mat-raised-button style="    width: 200px;
+    max-width: 40%;
+    background-color: #139a4d;
+    color: #fff;
+    text-transform: uppercase;" (click)="retornar(true)">{{ txtPositivo }}</button>
+    <button mat-raised-button style="    width: 200px;
+    max-width: 40%;
+    background-color: #e65353;
+    color: #fff;
+    text-transform: uppercase;" (click)="retornar(false)">{{ txtNegativo }}</button>
+</div>
