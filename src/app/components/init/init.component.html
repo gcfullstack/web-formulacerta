@@ -20,10 +20,15 @@
 </div>
 <div class="example-container mat-elevation-z8" style="margin-top: 30px; width: 100%;" [hidden]="list.data.length == 0">
     <mat-table #tabela [dataSource]="list" *ngIf="list.data.length > 0">
-        Numero Orçamento | Nome Produto | Cod Formula | Forma Farmaceutiva | Preço | URL
+        
         <ng-container matColumnDef="numOrcamento">
             <mat-header-cell *matHeaderCellDef>Nº ORÇAMENTO</mat-header-cell>
             <mat-cell *matCellDef="let orc" style="font-size:11px;"> {{orc.numOrcamento}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="nomeFuncionario">
+            <mat-header-cell *matHeaderCellDef>FUNCIONÁRIO</mat-header-cell>
+            <mat-cell *matCellDef="let orc" style="font-size:11px;"> {{orc.nomeFuncionario}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="descricaoSimples">
@@ -61,6 +66,7 @@
             <mat-cell *matCellDef="let orc" style="    font-size: 11px;
             cursor: pointer;
             text-decoration: underline;
+            overflow-wrap: anywhere;
             color: #8888e6;" (click)="copyToClipboard(orc)">
                 https://trayparceiros.commercesuite.com.br/loja/produto.php?loja=391250&IdProd={{orc.idProdutoTray}}
             <!--    http://meudominio.com/{{orc.formaFarmaceutica}}-{{orc.numOrcamento}}-{{orc.codFormaFarmaceutica}}-->

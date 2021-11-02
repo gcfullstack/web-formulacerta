@@ -16,7 +16,7 @@ export class InitComponent implements OnInit {
   blockUI: NgBlockUI;
 
   list = new MatTableDataSource<any>();
-  colunas: string[] = ["numOrcamento", "descricaoSimples", "formaFarmaceutica", "codFormaFarmaceutica", "preco", "url"];
+  colunas: string[] = ["numOrcamento", "nomeFuncionario", "descricaoSimples", "formaFarmaceutica", "codFormaFarmaceutica", "preco", "url"];
 
   constructor(
     private orcTrailService: OrcTrailService,
@@ -34,6 +34,9 @@ export class InitComponent implements OnInit {
       res => {
         this.list = new MatTableDataSource<any>(res);
         this.list.paginator = this.paginator;
+        this.blockUI.stop();
+      },
+      err => {
         this.blockUI.stop();
       }
     )

@@ -3,8 +3,14 @@
     font-size: 12px;
 }
 
+.mat-column-nomeFuncionario{
+    flex: 0 0 20%;
+    font-size: 12px;
+}
+
+
 .mat-column-descricaoSimples{
-    flex: 0 0 25%;
+    flex: 0 0 20%;
     font-size: 12px;
 }
 
@@ -14,7 +20,7 @@
 }
 
 .mat-column-formaFarmaceutica{
-    flex: 0 0 20%;
+    flex: 0 0 10%;
     font-size: 12px;
 }
 
@@ -24,7 +30,7 @@
 }
 
 .mat-column-url{
-    flex: 0 0 25%;
+    flex: 0 0 20%;
     font-size: 12px;
 }
 
