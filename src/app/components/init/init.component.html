@@ -31,6 +31,11 @@
             <mat-cell *matCellDef="let orc" style="font-size:11px;"> {{orc.nomeFuncionario}} </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="dataCadastro">
+            <mat-header-cell *matHeaderCellDef>DT.CADASTRO</mat-header-cell>
+            <mat-cell *matCellDef="let orc" style="font-size:11px;"> {{orc.dataCadastro | date: 'dd/MM/yyyy HH:mm:ss'}} </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="descricaoSimples">
             <mat-header-cell *matHeaderCellDef>DESCRIÇÃO</mat-header-cell>
             <mat-cell *matCellDef="let orc" style="font-size:11px;"> {{orc.descricaoSimples}} </mat-cell>
@@ -68,7 +73,8 @@
             text-decoration: underline;
             overflow-wrap: anywhere;
             color: #8888e6;" (click)="copyToClipboard(orc)">
-                https://trayparceiros.commercesuite.com.br/loja/produto.php?loja=391250&IdProd={{orc.idProdutoTray}}
+            Copiar Link
+             <!--   https://trayparceiros.commercesuite.com.br/loja/produto.php?loja=391250&IdProd={{orc.idProdutoTray}} -->
             <!--    http://meudominio.com/{{orc.formaFarmaceutica}}-{{orc.numOrcamento}}-{{orc.codFormaFarmaceutica}}-->
             </mat-cell>
         </ng-container>

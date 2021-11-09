@@ -16,7 +16,7 @@ export class InitComponent implements OnInit {
   blockUI: NgBlockUI;
 
   list = new MatTableDataSource<any>();
-  colunas: string[] = ["numOrcamento", "nomeFuncionario", "descricaoSimples", "formaFarmaceutica", "codFormaFarmaceutica", "preco", "url"];
+  colunas: string[] = ["numOrcamento", "nomeFuncionario", "dataCadastro", "descricaoSimples", "formaFarmaceutica", "codFormaFarmaceutica", "preco", "url"];
 
   constructor(
     private orcTrailService: OrcTrailService,

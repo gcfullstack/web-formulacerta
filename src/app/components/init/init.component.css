@@ -8,6 +8,10 @@
     font-size: 12px;
 }
 
+.mat-column-dataCadastro{
+    flex: 0 0 12%;
+    font-size: 12px;
+}
 
 .mat-column-descricaoSimples{
     flex: 0 0 20%;
