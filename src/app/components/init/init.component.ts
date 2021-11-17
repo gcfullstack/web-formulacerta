@@ -69,7 +69,7 @@ export class InitComponent implements OnInit {
 
   copyToClipboard (orc) {
     let el:any = document.createElement('textarea');
-    el.value = "https://trayparceiros.commercesuite.com.br/loja/produto.php?loja=391250&IdProd=" + orc.idProdutoTray;
+    el.value = "https://murilosa.commercesuite.com.br/loja/produto.php?loja=391250&IdProd=" + orc.idProdutoTray;
     el.style = {position: 'absolute', left: '-9999px'};
     el.setAttribute('readonly', '');
     document.body.appendChild(el);
