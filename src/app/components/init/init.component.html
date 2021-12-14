@@ -23,35 +23,35 @@
         
         <ng-container matColumnDef="numOrcamento">
             <mat-header-cell *matHeaderCellDef>Nº ORÇAMENTO</mat-header-cell>
-            <mat-cell *matCellDef="let orc" style="font-size:11px;"> {{orc.numOrcamento}} </mat-cell>
+            <mat-cell *matCellDef="let orc" style="font-size:11px;"> {{orc.orcamento_id}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="nomeFuncionario">
             <mat-header-cell *matHeaderCellDef>FUNCIONÁRIO</mat-header-cell>
-            <mat-cell *matCellDef="let orc" style="font-size:11px;"> {{orc.nomeFuncionario}} </mat-cell>
+            <mat-cell *matCellDef="let orc" style="font-size:11px;"> {{orc.nome_funcionario}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="dataCadastro">
             <mat-header-cell *matHeaderCellDef>DT.CADASTRO</mat-header-cell>
-            <mat-cell *matCellDef="let orc" style="font-size:11px;"> {{orc.dataCadastro | date: 'dd/MM/yyyy HH:mm:ss'}} </mat-cell>
+            <mat-cell *matCellDef="let orc" style="font-size:11px;"> {{orc.data_entrada | date:'short':'GMT'}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="descricaoSimples">
             <mat-header-cell *matHeaderCellDef>DESCRIÇÃO</mat-header-cell>
-            <mat-cell *matCellDef="let orc" style="font-size:11px;"> {{orc.descricaoSimples}} </mat-cell>
+            <mat-cell *matCellDef="let orc" style="font-size:11px;"> {{orc.desc_simples}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="formaFarmaceutica">
             <mat-header-cell *matHeaderCellDef>FORMA</mat-header-cell>
             <mat-cell *matCellDef="let orc" style="font-size:11px;">
-                {{orc.formaFarmaceutica}}
+                {{orc.forma_farmaceutica}}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="codFormaFarmaceutica">
             <mat-header-cell *matHeaderCellDef>COD. FORMA</mat-header-cell>
             <mat-cell *matCellDef="let orc" style="font-size:11px;">
-                {{orc.codFormaFarmaceutica}}
+                {{orc.cod_forma_farmaceutica}}
             </mat-cell>
         </ng-container>
 
@@ -68,12 +68,14 @@
             <mat-header-cell *matHeaderCellDef>
                 URL
             </mat-header-cell>
-            <mat-cell *matCellDef="let orc" style="    font-size: 11px;
+            <mat-cell *matCellDef="let orc">
+            <div *ngIf="orc.tray_produto_id != null " style="    font-size: 11px;
             cursor: pointer;
             text-decoration: underline;
             overflow-wrap: anywhere;
-            color: #8888e6;" (click)="copyToClipboard(orc)">
-            Copiar Link
+            color: #8888e6;" (click)="copyToClipboard(orc)">Copiar Link</div>
+            <div *ngIf="orc.tray_produto_id == null">Pendente de aprovação</div>
+         
              <!--   https://trayparceiros.commercesuite.com.br/loja/produto.php?loja=391250&IdProd={{orc.idProdutoTray}} -->
             <!--    http://meudominio.com/{{orc.formaFarmaceutica}}-{{orc.numOrcamento}}-{{orc.codFormaFarmaceutica}}-->
             </mat-cell>
