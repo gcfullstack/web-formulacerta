@@ -11,8 +11,8 @@ export class OrcTrailService {
     private http: HttpClient
   ) { }
 
-  findAll(): Observable<any> {
-    return this.http.get<any>('orcamento-trail');
+  findAll(page): Observable<any> {
+    return this.http.get<any>('orcamento-trail/' + page);
   }
 
   executarIntegracao(): Observable<any> {

@@ -25,12 +25,12 @@ export class InitComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.findAll();
+    this.findAll(0);
   }
 
-  findAll() {
+  findAll(page) {
     this.blockUI.start();
-    this.orcTrailService.findAll().subscribe(
+    this.orcTrailService.findAll(page).subscribe(
       res => {
         this.list = new MatTableDataSource<any>(res);
         this.list.paginator = this.paginator;
@@ -55,7 +55,7 @@ export class InitComponent implements OnInit {
           res => {
             this.msgService.msgSucesso("Integração executada com sucesso!");
             this.blockUI.stop();
-            this.findAll();
+            this.findAll(0);
           },
           error => {
             this.msgService.msgErro("Ocorreu um erro ao executar a integração")
@@ -78,5 +78,10 @@ export class InitComponent implements OnInit {
     document.body.removeChild(el);
     this.msgService.msgSucesso("URL Copiada");
    }
+
+   onChangePage(ev){
+      this.findAll(ev.pageIndex);
+   }
+   
 
 }
