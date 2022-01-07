@@ -16,10 +16,10 @@ export class OrcTrailService {
   }
 
   executarIntegracao(): Observable<any> {
-    return this.http.post<any>('public/integrar',{});
+    return this.http.post<any>('integrar',{});
   }
 
   teste(): Observable<any> {
-    return this.http.get<any>('public/integrar',{});
+    return this.http.get<any>('integrar',{});
   }
 }

@@ -40,7 +40,7 @@ export class HttpInterceptorImpl implements HttpInterceptor {
   }
 
   public buildAuthHeader(): string {
-    return 'Bearer ' + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJhcmVhIjoiVEkiLCJwZXJmaXMiOjEsInN1YiI6Imd1aWxoZXJtZS5jYW50b24iLCJub21lIjoiZ3VpbGhlcm1lLmNhbnRvbiIsImlkIjoiMzM0IiwiZXhwIjoxNjQwMDQ0ODAwLCJpbmZvIjoibnVsbCJ9.W31RD779qeNDLsVWAxgomUH-KaleV4TGNG7e8ibJdVEOXIHXhQDhkwVWMSC_3Yu8b9Zid_R7fVAMuUsSInUOeg";
+    return 'Bearer ' + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJKV1QgQXR0aXZlIiwiaWF0IjoxNjQxNTE3NjAyLCJleHAiOjE4OTM5Nzk2MzAsImF1ZCI6ImFwaS5mb3JtdWxhY2VydGEiLCJzdWIiOiJmb3JtdWxhY2VydGEiLCJHaXZlbk5hbWUiOiJGb3JtdWxhIENlcnRhIn0.6IkschU0vldjNpg4GES-0WmRVeizzVSvA7uJxF9sPupMNEY03sgFfG0gM5iSwJJjWZoW-qyVwhFFZt3yOI2JCw";
   }
 
 
