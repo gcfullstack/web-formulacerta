@@ -1,93 +1,120 @@
 <div style="padding-left:2.5%; padding-right:2.5%; padding-top:40px;">
-    <span class="titulo">Orçamentos - Fórmula Certa</span>
-    <div style="float: left;width: 50%;text-align: end;margin-bottom: 10px;width: 50%;">
-        <button (click)="openModal()"
-        mat-raised-button  style="color: white !important;
-        line-height: 26px !important;
+    <div>
+        <span class="titulo">Orçamentos - Fórmula Certa</span>
+
+        <div style="float: left;width: 60%;margin-bottom: 10px;">
+            <div style="width: 100%;
+            height: 36px;
+            float: left;
+            display: flex;
+            justify-content: end;">
+                <button (click)="openModal()" mat-raised-button style="color: white !important;
         background-color: #41b178;
         font-weight: 300;
         text-transform: uppercase;
         font-size: 13px;
+        float: left;
         letter-spacing: .6px;">
-            Integrar Orçamento
-        </button>
+                    Integrar Orçamento
+                </button>
+                <div style="float: left;">
+                    <mat-form-field style="width: 180px;
+                    float: left;
+                    font-size: 12px;
+                    margin-left: 20px;
+                    line-height: 24px;
+                    " appearance="outline">
+                        <input matInput [(ngModel)]="idBuscado" placeholder="Nº Orçamento">
+                    </mat-form-field>
+                    <div style="float: left;">
+                        <button mat-icon-button (click)="buscarOrcamentoPorId()"
+                            matTooltip="Pesquisar">
+                            <mat-icon style="    position: relative;
+                            bottom: 2px">search</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <mat-divider style="clear: both;"></mat-divider>
-<div *ngIf="list.data.length == 0">
- <span class="span-no-rows">
-    Ainda não existem existros. Clique no botão acima para executar a integração
- </span>   
-</div>
-<div class="example-container mat-elevation-z8" style="margin-top: 30px; width: 100%;" [hidden]="list.data.length == 0">
-    <mat-table #tabela [dataSource]="list" *ngIf="list.data.length > 0">
-        
-        <ng-container matColumnDef="numOrcamento">
-            <mat-header-cell *matHeaderCellDef>Nº ORÇAMENTO</mat-header-cell>
-            <mat-cell *matCellDef="let orc" style="font-size:11px;"> {{orc.orcamento_id}} </mat-cell>
-        </ng-container>
+    <div *ngIf="list.data.length == 0">
+        <span class="span-no-rows">
+            Ainda não existem existros. Clique no botão acima para executar a integração
+        </span>
+    </div>
+    <div class="example-container mat-elevation-z8" style="margin-top: 30px; width: 100%;"
+        [hidden]="list.data.length == 0">
+        <mat-table #tabela [dataSource]="list" *ngIf="list.data.length > 0">
 
-        <ng-container matColumnDef="nomeFuncionario">
-            <mat-header-cell *matHeaderCellDef>FUNCIONÁRIO</mat-header-cell>
-            <mat-cell *matCellDef="let orc" style="font-size:11px;"> {{orc.nome_funcionario}} </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="numOrcamento">
+                <mat-header-cell *matHeaderCellDef>Nº ORÇAMENTO</mat-header-cell>
+                <mat-cell *matCellDef="let orc" style="font-size:11px;"> {{orc.orcamento_id}} </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="dataCadastro">
-            <mat-header-cell *matHeaderCellDef>DT.CADASTRO</mat-header-cell>
-            <mat-cell *matCellDef="let orc" style="font-size:11px;"> {{orc.data_entrada | date:'short':'GMT'}} </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="nomeFuncionario">
+                <mat-header-cell *matHeaderCellDef>FUNCIONÁRIO</mat-header-cell>
+                <mat-cell *matCellDef="let orc" style="font-size:11px;"> {{orc.nome_funcionario}} </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="descricaoSimples">
-            <mat-header-cell *matHeaderCellDef>DESCRIÇÃO</mat-header-cell>
-            <mat-cell *matCellDef="let orc" style="font-size:11px;"> {{orc.desc_simples}} </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="dataCadastro">
+                <mat-header-cell *matHeaderCellDef>DT.CADASTRO</mat-header-cell>
+                <mat-cell *matCellDef="let orc" style="font-size:11px;"> {{orc.data_entrada | date:'short':'GMT'}}
+                </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="formaFarmaceutica">
-            <mat-header-cell *matHeaderCellDef>FORMA</mat-header-cell>
-            <mat-cell *matCellDef="let orc" style="font-size:11px;">
-                {{orc.forma_farmaceutica}}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="descricaoSimples">
+                <mat-header-cell *matHeaderCellDef>DESCRIÇÃO</mat-header-cell>
+                <mat-cell *matCellDef="let orc" style="font-size:11px;"> {{orc.desc_simples}} </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="codFormaFarmaceutica">
-            <mat-header-cell *matHeaderCellDef>COD. FORMA</mat-header-cell>
-            <mat-cell *matCellDef="let orc" style="font-size:11px;">
-                {{orc.cod_forma_farmaceutica}}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="formaFarmaceutica">
+                <mat-header-cell *matHeaderCellDef>FORMA</mat-header-cell>
+                <mat-cell *matCellDef="let orc" style="font-size:11px;">
+                    {{orc.forma_farmaceutica}}
+                </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="preco">
-            <mat-header-cell *matHeaderCellDef>
-                PREÇO
-            </mat-header-cell>
-            <mat-cell *matCellDef="let orc" style="font-size:11px;">
-                {{orc.preco | currency:'BRL'}}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="codFormaFarmaceutica">
+                <mat-header-cell *matHeaderCellDef>COD. FORMA</mat-header-cell>
+                <mat-cell *matCellDef="let orc" style="font-size:11px;">
+                    {{orc.cod_forma_farmaceutica}}
+                </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="url">
-            <mat-header-cell *matHeaderCellDef>
-                URL
-            </mat-header-cell>
-            <mat-cell *matCellDef="let orc">
-            <div *ngIf="orc.tray_produto_id != null " style="    font-size: 11px;
+            <ng-container matColumnDef="preco">
+                <mat-header-cell *matHeaderCellDef>
+                    PREÇO
+                </mat-header-cell>
+                <mat-cell *matCellDef="let orc" style="font-size:11px;">
+                    {{orc.preco | currency:'BRL'}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="url">
+                <mat-header-cell *matHeaderCellDef>
+                    URL
+                </mat-header-cell>
+                <mat-cell *matCellDef="let orc">
+                    <div *ngIf="orc.tray_produto_id != null " style="    font-size: 11px;
             cursor: pointer;
             text-decoration: underline;
             overflow-wrap: anywhere;
             color: #8888e6;" (click)="copyToClipboard(orc)">Copiar Link</div>
-            <div *ngIf="orc.tray_produto_id == null">Pendente de aprovação</div>
-         
-             <!--   https://trayparceiros.commercesuite.com.br/loja/produto.php?loja=391250&IdProd={{orc.idProdutoTray}} -->
-            <!--    http://meudominio.com/{{orc.formaFarmaceutica}}-{{orc.numOrcamento}}-{{orc.codFormaFarmaceutica}}-->
-            </mat-cell>
-        </ng-container>
+                    <div *ngIf="orc.tray_produto_id == null">Pendente de aprovação</div>
+
+                    <!--   https://trayparceiros.commercesuite.com.br/loja/produto.php?loja=391250&IdProd={{orc.idProdutoTray}} -->
+                    <!--    http://meudominio.com/{{orc.formaFarmaceutica}}-{{orc.numOrcamento}}-{{orc.codFormaFarmaceutica}}-->
+                </mat-cell>
+            </ng-container>
 
 
 
 
-        <mat-header-row *matHeaderRowDef="colunas"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: colunas;" class="min-height-30px"></mat-row>
-    </mat-table>
-    <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
-    </mat-paginator>
-</div>
+            <mat-header-row *matHeaderRowDef="colunas"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: colunas;" class="min-height-30px"></mat-row>
+        </mat-table>
+        <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
+        </mat-paginator>
+    </div>
 </div>

@@ -17,6 +17,7 @@ export class InitComponent implements OnInit {
 
   list = new MatTableDataSource<any>();
   colunas: string[] = ["numOrcamento", "nomeFuncionario", "dataCadastro", "descricaoSimples", "formaFarmaceutica", "codFormaFarmaceutica", "preco", "url"];
+  idBuscado:string
 
   constructor(
     private orcTrailService: OrcTrailService,
@@ -78,5 +79,24 @@ export class InitComponent implements OnInit {
     document.body.removeChild(el);
     this.msgService.msgSucesso("URL Copiada");
    }
+
+   buscarOrcamentoPorId(){
+     if(this.idBuscado){
+      this.blockUI.start();
+      this.orcTrailService.findByIdOrcamento(this.idBuscado).subscribe(
+        res => {
+          this.list = new MatTableDataSource<any>(res);
+          this.list.paginator = this.paginator;
+          this.blockUI.stop();
+        },
+        err => {
+          this.blockUI.stop();
+        }
+      )
+     }else{
+       this.findAll();
+     }
+
+  }
 
 }

@@ -19,7 +19,8 @@ export class OrcTrailService {
     return this.http.post<any>('integrar',{});
   }
 
-  teste(): Observable<any> {
-    return this.http.get<any>('integrar',{});
+  findByIdOrcamento(id: string): Observable<any> {
+    return this.http.get<any>('orcamento-trail/id-orcamento/' + id);
   }
+
 }
